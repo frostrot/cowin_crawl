@@ -18,7 +18,7 @@ def fetch(url):
 	for item in status['centers']:
 		if item['name'].upper().find("BURARI")!=-1:
 			for session in item['sessions']:
-				if session['min_age_limit']==45 and session['available_capacity']>0:
+				if session['min_age_limit']==18 and session['available_capacity']>0:
 					available=True
 					sendSOS(item['name'],session['date'])
 					print("found!!!!")
