@@ -14,7 +14,8 @@ def fetch(url):
 	response = requests.get(url)
 	status = response.json()
 	available = False
-
+	print("fetched data")
+	
 	for item in status['centers']:
 		if item['name'].upper().find("BURARI")!=-1:
 			for session in item['sessions']:
