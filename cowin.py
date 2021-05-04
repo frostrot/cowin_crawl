@@ -2,6 +2,7 @@ import requests
 import datetime
 import json
 import telegram_send
+import schedule
 
 def sendSOS(name:str,date:str):
 	telegram_send.send(messages=[f"SOS!!!!! \n Slot available at {name} on {date}"])
@@ -20,6 +21,7 @@ def fetch(url):
 					available=True
 					sendSOS(item['name'],session['date'])
 					print("found!!!!")
+					schedule.clear('fetch')
 					break
 			if available:
 				break
@@ -30,4 +32,7 @@ if __name__ == "__main__":
 	base = datetime.datetime.today()
 	district =141
 	url = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id={}&date={}".format(district,base.strftime("%d-%m-%Y"))
-	fetch(url)
+	schedule.every(1).minutes.do(fetch,url=url).tag('fetch')
+
+	while True:
+		schedule.run_pending()

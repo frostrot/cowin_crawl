@@ -1,3 +1,4 @@
 pip==21.0.1
 requests==2.23.0
 telegram_send==0.25
+schedule==1.0.0
