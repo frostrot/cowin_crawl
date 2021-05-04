@@ -12,7 +12,7 @@ def sendSOS(name:str,date:str):
 def fetch(url):
 	print("pinged the site!!")
 	response = requests.get(url)
-	status = json.loads(response.text)
+	status = response.json()
 	available = False
 
 	for item in status['centers']:
