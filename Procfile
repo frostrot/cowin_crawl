@@ -1,1 +1,1 @@
-release: python cowin.py
+worker: python cowin.py
