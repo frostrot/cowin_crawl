@@ -1,11 +1,12 @@
 import requests
 import datetime
 import json
-import telegram_send
 import schedule
 
 def sendSOS(name:str,date:str):
-	telegram_send.send(messages=[f"SOS!!!!! \n Slot available at {name} on {date}"])
+	text = f"SOS!!!!! \n Slot available at {name} on {date}"
+	texturl = "https://api.telegram.org/bot1784546021:AAF3zg8uosdf1-fCrZAbRLpfDi7S2shI1Vc/sendMessage?chat_id=691613249&text={}".format(text)
+	requests.get(texturl)
 	return
 
 def fetch(url):
@@ -17,7 +18,7 @@ def fetch(url):
 	for item in status['centers']:
 		if item['name'].upper().find("BURARI")!=-1:
 			for session in item['sessions']:
-				if session['min_age_limit']==18 and session['available_capacity']>0:
+				if session['min_age_limit']==45 and session['available_capacity']>0:
 					available=True
 					sendSOS(item['name'],session['date'])
 					print("found!!!!")
