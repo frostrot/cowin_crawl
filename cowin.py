@@ -12,6 +12,8 @@ def sendSOS(name:str,date:str):
 def fetch(url):
 	print("pinged the site!!")
 	response = requests.get(url)
+	print(response)
+	print(response.text)
 	status = response.json()
 	available = False
 	print("fetched data")
