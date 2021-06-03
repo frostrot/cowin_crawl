@@ -5,7 +5,7 @@ import schedule
 
 def sendSOS(name:str,date:str):
 	text = f"SOS!!!!! \n Slot available at {name} on {date}"
-	texturl = "https://api.telegram.org/bot1784546021:AAF3zg8uosdf1-fCrZAbRLpfDi7S2shI1Vc/sendMessage?chat_id=-1001159439658&text={}".format(text)
+	texturl = "https://api.telegram.org/********************/sendMessage?chat_id=*************&text={}".format(text)
 	requests.get(texturl)
 	return
 
